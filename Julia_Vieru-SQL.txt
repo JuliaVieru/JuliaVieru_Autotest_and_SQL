@@ -1,0 +1,31 @@
+
+1 задание 
+select c.login, count (case when o."inDelivery" = true then 1 else null end) as delivery_count from "Couriers" as c join "Orders" as o on c.id = o."courierId" group by c.login;
+
+
+SELECT
+    c.login,
+    COUNT(CASE WHEN o."inDelivery" = TRUE THEN 1 ELSE NULL END) AS delivery_count
+FROM
+    Couriers AS c
+JOIN
+    Orders AS o
+ON
+    c.id = o.courierId
+GROUP BY
+    c.login;
+
+
+2 задание
+select track, case when finished = true then '2' when cancelled = true then '-1' when "inDelivery" = true then '1' else '0' end as status from "Orders";
+
+
+SELECT
+    track,
+    CASE
+        WHEN finished = TRUE THEN 2
+        WHEN cancelled = TRUE THEN -1
+        WHEN "inDelivery" = TRUE THEN 1
+        ELSE 0
+    END AS status
+FROM "Orders";
