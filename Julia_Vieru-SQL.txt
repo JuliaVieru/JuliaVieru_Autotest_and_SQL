@@ -1,5 +1,5 @@
 
-1 задание 
+1 task 
 select c.login, count (case when o."inDelivery" = true then 1 else null end) as delivery_count from "Couriers" as c join "Orders" as o on c.id = o."courierId" group by c.login;
 
 
@@ -16,7 +16,7 @@ GROUP BY
     c.login;
 
 
-2 задание
+2 task
 select track, case when finished = true then '2' when cancelled = true then '-1' when "inDelivery" = true then '1' else '0' end as status from "Orders";
 
 
