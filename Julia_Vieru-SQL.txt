@@ -1,19 +1,13 @@
 
 1 task 
-select c.login, count (case when o."inDelivery" = true then 1 else null end) as delivery_count from "Couriers" as c join "Orders" as o on c.id = o."courierId" group by c.login;
+select c.login, count (o."inDelivery") as delivery_count from "Couriers" as c inner join "Orders" as o on c.id = o."courierId" when o."inDelivery" = 'true' group by c.login;
 
 
-SELECT
-    c.login,
-    COUNT(CASE WHEN o."inDelivery" = TRUE THEN 1 ELSE NULL END) AS delivery_count
-FROM
-    Couriers AS c
-JOIN
-    Orders AS o
-ON
-    c.id = o.courierId
-GROUP BY
-    c.login;
+SELECT c.login, count (o."inDelivery") as delivery_count
+FROM "Couriers" AS c
+INNER JOIN "Orders" AS o ON c.id = o."courierId"
+WHERE o."inDelivery" = 'true'
+GROUP BY c.login;
 
 
 2 task
